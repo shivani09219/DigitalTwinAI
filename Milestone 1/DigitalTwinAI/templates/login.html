@@ -1,0 +1,219 @@
+{% extends &quot;base.html&quot; %}
+{% block extra_css %}
+&lt;style&gt;
+/* Override the default container padding for fullwidth layout */
+.login-wrapper {
+min-height: 80vh;
+display: flex;
+align-items: center;
+justify-content: center;
+background: #f8f9fa;
+margin: -1.5rem -1.5rem 0 -1.5rem; /* remove container padding */
+padding: 2rem 0;
+}
+.login-card {
+border: none;
+border-radius: 24px;
+box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+overflow: hidden;
+width: 100%;
+max-width: 1000px;
+background: white;
+}
+.login-left {
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+color: white;
+padding: 3rem 2rem;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+min-height: 400px;
+}
+.login-left h2 {
+font-weight: 700;
+font-size: 2.2rem;
+margin-bottom: 1rem;
+}
+.login-left p {
+opacity: 0.9;
+font-size: 1.1rem;
+max-width: 320px;
+}
+.login-left img {
+max-width: 200px;
+margin-bottom: 1.5rem;
+filter: drop-shadow(0 8px 20px rgba(0,0,0,0.2));
+
+}
+.login-right {
+padding: 2.5rem 2rem;
+background: white;
+}
+.login-right h3 {
+font-weight: 700;
+color: #2d3748;
+margin-bottom: 0.25rem;
+}
+.login-right .subtitle {
+color: #718096;
+font-size: 0.95rem;
+margin-bottom: 1.5rem;
+}
+.form-floating {
+margin-bottom: 1rem;
+}
+.form-floating &gt; .form-control {
+border-radius: 12px;
+border: 1.5px solid #e2e8f0;
+transition: border-color 0.2s;
+padding: 1rem 0.75rem;
+height: calc(3.5rem + 2px);
+}
+.form-floating &gt; .form-control:focus {
+border-color: #667eea;
+box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+}
+.form-floating &gt; label {
+padding: 1rem 0.75rem;
+color: #a0aec0;
+}
+.input-icon {
+position: absolute;
+right: 1rem;
+top: 50%;
+transform: translateY(-50%);
+color: #a0aec0;
+pointer-events: none;
+z-index: 10;
+}
+.form-check-input:checked {
+background-color: #667eea;
+border-color: #667eea;
+}
+.btn-login {
+background: linear-gradient(135deg, #667eea, #764ba2);
+
+border: none;
+border-radius: 12px;
+padding: 0.75rem;
+font-weight: 600;
+color: white;
+transition: transform 0.2s, box-shadow 0.2s;
+width: 100%;
+}
+.btn-login:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+color: white;
+}
+.social-login .btn-outline-secondary {
+border-radius: 50px;
+border-color: #e2e8f0;
+color: #4a5568;
+transition: all 0.2s;
+flex: 1;
+}
+.social-login .btn-outline-secondary:hover {
+background: #f7fafc;
+border-color: #cbd5e0;
+}
+.divider {
+display: flex;
+align-items: center;
+margin: 1.5rem 0;
+color: #a0aec0;
+font-size: 0.85rem;
+}
+.divider::before, .divider::after {
+content: &quot;&quot;;
+flex: 1;
+border-top: 1px solid #e2e8f0;
+}
+.divider::before { margin-right: 1rem; }
+.divider::after { margin-left: 1rem; }
+.forgot-link {
+color: #667eea;
+text-decoration: none;
+font-size: 0.9rem;
+}
+.forgot-link:hover { text-decoration: underline; }
+@media (max-width: 768px) {
+.login-left { min-height: 200px; padding: 2rem 1rem; }
+.login-left h2 { font-size: 1.8rem; }
+.login-left img { max-width: 120px; }
+
+.login-wrapper { padding: 1rem; }
+}
+&lt;/style&gt;
+{% endblock %}
+{% block content %}
+&lt;div class=&quot;login-wrapper&quot;&gt;
+&lt;div class=&quot;login-card&quot;&gt;
+&lt;div class=&quot;row g-0&quot;&gt;
+&lt;!-- Left side – illustration &amp; branding --&gt;
+&lt;div class=&quot;col-md-5 login-left&quot;&gt;
+&lt;img src=&quot;https://img.icons8.com/fluency/240/000000/artificial-intelligence.png&quot; alt=&quot;AI&quot;&gt;
+&lt;h2&gt;Welcome Back!&lt;/h2&gt;
+&lt;p&gt;Log in to continue your journey with your Digital Twin AI.&lt;/p&gt;
+&lt;div class=&quot;mt-3&quot;&gt;
+&lt;span class=&quot;badge bg-light text-dark me-1&quot;&gt;�� Secure&lt;/span&gt;
+&lt;span class=&quot;badge bg-light text-dark&quot;&gt;⚡ Fast&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Right side – login form --&gt;
+&lt;div class=&quot;col-md-7 login-right&quot;&gt;
+&lt;h3&gt;Sign In&lt;/h3&gt;
+&lt;p class=&quot;subtitle&quot;&gt;Access your personal dashboard and simulations.&lt;/p&gt;
+&lt;form method=&quot;POST&quot;&gt;
+&lt;!-- Username field with icon --&gt;
+&lt;div class=&quot;form-floating position-relative&quot;&gt;
+&lt;input type=&quot;text&quot; name=&quot;username&quot; id=&quot;username&quot; class=&quot;form-control&quot;
+placeholder=&quot;Username&quot; required&gt;
+&lt;label for=&quot;username&quot;&gt;&lt;i class=&quot;fas fa-user me-2&quot;&gt;&lt;/i&gt;Username&lt;/label&gt;
+&lt;/div&gt;
+&lt;!-- Password field with icon --&gt;
+&lt;div class=&quot;form-floating position-relative&quot;&gt;
+&lt;input type=&quot;password&quot; name=&quot;password&quot; id=&quot;password&quot; class=&quot;form-control&quot;
+placeholder=&quot;Password&quot; required&gt;
+&lt;label for=&quot;password&quot;&gt;&lt;i class=&quot;fas fa-lock me-2&quot;&gt;&lt;/i&gt;Password&lt;/label&gt;
+&lt;/div&gt;
+&lt;!-- Remember me &amp; forgot password --&gt;
+&lt;div class=&quot;d-flex justify-content-between align-items-center mb-3&quot;&gt;
+&lt;div class=&quot;form-check&quot;&gt;
+&lt;input class=&quot;form-check-input&quot; type=&quot;checkbox&quot; id=&quot;remember&quot;
+name=&quot;remember&quot;&gt;
+&lt;label class=&quot;form-check-label&quot; for=&quot;remember&quot; style=&quot;font-size: 0.9rem;&quot;&gt;
+Remember me
+&lt;/label&gt;
+
+&lt;/div&gt;
+&lt;a href=&quot;#&quot; class=&quot;forgot-link&quot;&gt;Forgot password?&lt;/a&gt;
+&lt;/div&gt;
+&lt;!-- Submit button --&gt;
+&lt;button type=&quot;submit&quot; class=&quot;btn btn-login&quot;&gt;
+&lt;i class=&quot;fas fa-sign-in-alt me-2&quot;&gt;&lt;/i&gt;Log In
+&lt;/button&gt;
+&lt;/form&gt;
+&lt;!-- Divider --&gt;
+&lt;div class=&quot;divider&quot;&gt;or continue with&lt;/div&gt;
+&lt;!-- Social login placeholders --&gt;
+&lt;div class=&quot;social-login d-flex gap-2&quot;&gt;
+&lt;button class=&quot;btn btn-outline-secondary&quot; onclick=&quot;alert(&#39;Social login coming soon!&#39;)&quot;&gt;
+&lt;i class=&quot;fab fa-google me-1&quot;&gt;&lt;/i&gt; Google
+&lt;/button&gt;
+&lt;button class=&quot;btn btn-outline-secondary&quot; onclick=&quot;alert(&#39;Social login coming soon!&#39;)&quot;&gt;
+&lt;i class=&quot;fab fa-github me-1&quot;&gt;&lt;/i&gt; GitHub
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;!-- Register link --&gt;
+&lt;p class=&quot;mt-4 text-center text-muted&quot; style=&quot;font-size: 0.95rem;&quot;&gt;
+Don&#39;t have an account? &lt;a href=&quot;{{ url_for(&#39;register&#39;) }}&quot; style=&quot;color: #667eea; font-
+weight: 600;&quot;&gt;Sign up now&lt;/a&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+{% endblock %}
